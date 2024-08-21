@@ -1,10 +1,8 @@
 package a.albertocoscia.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -16,6 +14,9 @@ public class Location {
     private UUID id;
     private String nome;
     private String citta;
+
+    @OneToMany(mappedBy = "location")
+    private List<Event> listaEventi;
 
     public Location() {
     }
@@ -44,4 +45,16 @@ public class Location {
     public void setCitta(String citta) {
         this.citta = citta;
     }
+
+    public List<Event> getListaEventi() {
+        return listaEventi;
+    }
+
+    ;
+
+    public void setListaEventi(List<Event> listaEventi) {
+        this.listaEventi = listaEventi;
+    }
+
+    ;
 }

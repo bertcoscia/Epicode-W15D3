@@ -1,5 +1,5 @@
 package a.albertocoscia.enums;
 
-public enum EventTipe {
+public enum EventType {
     PUBBLICO, PRIVATO
 }

@@ -1,10 +1,7 @@
 package a.albertocoscia.entities;
 
-import a.albertocoscia.enums.EventTipe;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import a.albertocoscia.enums.EventType;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -19,13 +16,17 @@ public class Event {
     private LocalDate data;
     private String descrizione;
     private int maxPax;
-    private EventTipe tipo;
+    private EventType tipo;
     private String titolo;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
 
     private Event() {
     }
 
-    public Event(String descrizione, int maxPax, EventTipe tipo, String titolo) {
+    public Event(String descrizione, int maxPax, EventType tipo, String titolo) {
         this.descrizione = descrizione;
         this.maxPax = maxPax;
         this.tipo = tipo;
@@ -61,11 +62,11 @@ public class Event {
         this.maxPax = maxPax;
     }
 
-    public EventTipe getTipo() {
+    public EventType getTipo() {
         return tipo;
     }
 
-    public void setTipo(EventTipe tipo) {
+    public void setTipo(EventType tipo) {
         this.tipo = tipo;
     }
 
@@ -75,5 +76,13 @@ public class Event {
 
     public void setTitolo(String titolo) {
         this.titolo = titolo;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
