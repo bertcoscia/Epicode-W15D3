@@ -4,8 +4,6 @@ import a.albertocoscia.enums.PersonGender;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,9 +20,6 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private PersonGender gender;
 
-    @OneToMany(mappedBy = "person")
-    private List<Attendance> listaPartecipazioni;
-
     public Person() {
     }
 
@@ -34,7 +29,6 @@ public class Person {
         this.email = email;
         this.dataNascita = dataNascita;
         this.gender = gender;
-        this.listaPartecipazioni = new ArrayList<>();
     }
 
     public UUID getId() {
@@ -81,14 +75,6 @@ public class Person {
         this.gender = gender;
     }
 
-    public List<Attendance> getListaPartecipazioni() {
-        return listaPartecipazioni;
-    }
-
-    public void setListaPartecipazioni(List<Attendance> listaPartecipazioni) {
-        this.listaPartecipazioni = listaPartecipazioni;
-    }
-
     @Override
     public String toString() {
         return "Person{" +
@@ -98,7 +84,6 @@ public class Person {
                 ", email='" + email + '\'' +
                 ", dataNascita=" + dataNascita +
                 ", gender=" + gender +
-                ", listaPartecipazioni=" + listaPartecipazioni +
                 '}';
     }
 }
