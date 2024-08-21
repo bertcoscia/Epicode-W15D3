@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "evento")
+@Table(name = "events")
 
 public class Event {
     @Id
