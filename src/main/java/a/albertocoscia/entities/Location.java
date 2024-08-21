@@ -50,11 +50,7 @@ public class Location {
         return listaEventi;
     }
 
-    ;
-
     public void setListaEventi(List<Event> listaEventi) {
         this.listaEventi = listaEventi;
     }
-
-    ;
 }
