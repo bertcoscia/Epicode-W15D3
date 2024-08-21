@@ -65,7 +65,7 @@ public class Attendance {
         return "Attendance{" +
                 "id=" + id +
                 ", stato=" + stato +
-                // ", person=" + person +
+                ", person=" + person +
                 ", event=" + event +
                 '}';
     }
