@@ -5,6 +5,8 @@ import a.albertocoscia.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.UUID;
+
 public class EventDAO {
     private final EntityManager em;
 
@@ -21,7 +23,7 @@ public class EventDAO {
     }
 
     public Event getById(String eventId) {
-        Event found = em.find(Event.class, eventId);
+        Event found = em.find(Event.class, UUID.fromString(eventId));
         if (found == null) throw new NotFoundException(eventId);
         return found;
     }

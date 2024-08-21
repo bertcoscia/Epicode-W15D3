@@ -7,7 +7,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "locations")
-
 public class Location {
     @Id
     @GeneratedValue
@@ -52,5 +51,15 @@ public class Location {
 
     public void setListaEventi(List<Event> listaEventi) {
         this.listaEventi = listaEventi;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", citta='" + citta + '\'' +
+                ", listaEventi=" + listaEventi +
+                '}';
     }
 }

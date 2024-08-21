@@ -19,6 +19,7 @@ public class Person {
     private String cognome;
     private String email;
     private LocalDate dataNascita;
+    @Enumerated(EnumType.STRING)
     private PersonGender gender;
 
     @OneToMany(mappedBy = "person")
@@ -86,5 +87,18 @@ public class Person {
 
     public void setListaPartecipazioni(List<Attendance> listaPartecipazioni) {
         this.listaPartecipazioni = listaPartecipazioni;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", email='" + email + '\'' +
+                ", dataNascita=" + dataNascita +
+                ", gender=" + gender +
+                ", listaPartecipazioni=" + listaPartecipazioni +
+                '}';
     }
 }

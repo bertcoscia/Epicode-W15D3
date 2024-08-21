@@ -12,6 +12,7 @@ public class Attendance {
     @Id
     @GeneratedValue
     private UUID id;
+    @Enumerated(EnumType.STRING)
     private AttendanceState stato;
 
     @ManyToOne
@@ -57,5 +58,15 @@ public class Attendance {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    @Override
+    public String toString() {
+        return "Attendance{" +
+                "id=" + id +
+                ", stato=" + stato +
+                // ", person=" + person +
+                ", event=" + event +
+                '}';
     }
 }

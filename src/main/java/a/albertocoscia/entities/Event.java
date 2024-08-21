@@ -13,25 +13,27 @@ public class Event {
     @Id
     @GeneratedValue
     private UUID id;
+    private String titolo;
     private LocalDate data;
     private String descrizione;
     private int maxPax;
+    @Enumerated(EnumType.STRING)
     private EventType tipo;
-    private String titolo;
 
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    private Event() {
+    public Event() {
     }
 
-    public Event(String descrizione, int maxPax, EventType tipo, String titolo) {
+    public Event(String titolo, String descrizione, int maxPax, EventType tipo, Location location) {
+        this.titolo = titolo;
+        this.data = LocalDate.now();
         this.descrizione = descrizione;
         this.maxPax = maxPax;
         this.tipo = tipo;
-        this.titolo = titolo;
-        this.data = LocalDate.now();
+        this.location = location;
     }
 
     public UUID getId() {
@@ -84,5 +86,18 @@ public class Event {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", titolo='" + titolo + '\'' +
+                ", data=" + data +
+                ", descrizione='" + descrizione + '\'' +
+                ", maxPax=" + maxPax +
+                ", tipo=" + tipo +
+                //", location=" + location +
+                '}';
     }
 }
